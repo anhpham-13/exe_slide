@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HomeMind · Kịch bản thuyết trình</title>
+<style>
+:root{--paper:#f5f2ea;--ink:#11201c;--green:#1b6b52;--green-l:#dfe9e1;--accent:#e4572e;--amber:#b67a0a;--amber-l:#fbf0d6;--mute:#66726c;--line:#d8d3c6;--white:#fffdf8;--font:'Segoe UI',Arial,system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#0b1512;font-family:var(--font);color:var(--ink)}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;background:var(--paper);overflow:hidden}
+.slide{position:absolute;inset:0;padding:64px 120px 56px;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s;background:var(--paper)}
+.slide.active{opacity:1;visibility:visible;transform:none}
+.eyebrow{font-size:22px;font-weight:700;letter-spacing:.14em;color:var(--green);text-transform:uppercase;margin-bottom:14px;display:flex;gap:18px;align-items:center}
+.time.opt{background:var(--amber)}
+.time{background:var(--accent);color:#fff;border-radius:999px;padding:4px 16px;font-size:20px;letter-spacing:.06em}
+h2{font-size:60px;line-height:1.1;margin-bottom:26px;font-weight:800;letter-spacing:-.035em}
+h2 em{font-style:normal;color:var(--green)}
+.cols{display:grid;grid-template-columns:660px 1fr;gap:44px;flex:1;min-height:0}
+.thumb{width:660px;height:371px;border:1.5px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;position:relative}
+.thumb iframe{position:absolute;left:0;top:0;width:1920px;height:1080px;border:0;transform:scale(.34375);transform-origin:0 0;pointer-events:none}
+.ask{margin-top:22px;background:var(--amber-l);border:1.5px solid #e6c46f;border-radius:16px;padding:20px 24px;font-size:24px;line-height:1.4}
+.ask b{display:block;font-size:18px;letter-spacing:.12em;color:var(--amber);text-transform:uppercase;margin-bottom:8px}
+.say{background:var(--white);border:1.5px solid var(--line);border-radius:20px;padding:30px 36px;overflow:hidden}
+.say b.k{display:block;font-size:18px;letter-spacing:.12em;color:var(--green);text-transform:uppercase;margin-bottom:12px}
+.say p{font-size:29px;line-height:1.5;margin:0 0 18px}
+.say p:before{content:"“";color:var(--green);font-weight:800}
+.say p:after{content:"”";color:var(--green);font-weight:800}
+.foot{margin-top:18px;font-size:20px;color:var(--mute);border-top:1.5px solid var(--line);padding-top:12px;display:flex;justify-content:space-between}
+#progress{position:fixed;left:0;top:0;height:5px;background:var(--green);z-index:9;transition:width .25s}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="stage"></div>
+<script src="notes.js"></script>
+<script>
+(function(){
+  const stage=document.getElementById('stage'),bar=document.getElementById('progress'),N=window.NOTES||[];
+  const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  stage.innerHTML=N.map((n,i)=>`<section class="slide">
+    <div class="eyebrow"><span>Kịch bản · Slide ${i+1}/${N.length}</span><span class="time${n.opt?' opt':''}">${esc(n.time)}</span></div>
+    <h2>${esc(n.title)}</h2>
+    <div class="cols">
+      <div><div class="thumb"><iframe src="index.html#${i+1}" loading="lazy" tabindex="-1" title="Slide ${i+1}"></iframe></div>
+        <div class="ask"><b>Có thể bị hỏi</b>${esc(n.ask)}</div></div>
+      <div class="say"><b class="k">Lời thuyết trình</b>${n.say.map(t=>`<p>${esc(t)}</p>`).join('')}</div>
+    </div>
+    <div class="foot"><span>HomeMind · Nhóm EXE · FPT</span><span>←/→ chuyển · phím O mở slide gốc</span></div>
+  </section>`).join('');
+  const slides=[...document.querySelectorAll('.slide')];
+  let cur=Math.max(0,Math.min(slides.length-1,(parseInt(location.hash.slice(1),10)||1)-1));
+  const fit=()=>stage.style.transform=`translate(-50%,-50%) scale(${Math.min(innerWidth/1920,innerHeight/1080)})`;
+  function show(n){cur=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===cur));bar.style.width=((cur+1)/slides.length*100)+'%';history.replaceState(null,'','#'+(cur+1))}
+  addEventListener('hashchange',()=>{const n=(parseInt(location.hash.slice(1),10)||1)-1;if(n!==cur)show(n)});
+  addEventListener('resize',fit);
+  addEventListener('keydown',e=>{const k=e.key;if(['ArrowRight','PageDown',' ','Enter'].includes(k)){e.preventDefault();show(cur+1)}else if(['ArrowLeft','PageUp','Backspace'].includes(k)){e.preventDefault();show(cur-1)}else if(k==='Home')show(0);else if(k==='End')show(slides.length-1);else if(k.toLowerCase()==='f')document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();else if(k.toLowerCase()==='o')location.href='index.html#'+(cur+1)});
+  addEventListener('click',e=>e.clientX<innerWidth*.25?show(cur-1):show(cur+1));
+  fit();show(cur);
+})();
+</script>
+</body>
+</html>

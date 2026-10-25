@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HomeMind · Tiến độ Dev & Marketing</title>
+<style>
+:root{--paper:#f5f2ea;--ink:#11201c;--green:#1b6b52;--green-l:#dfe9e1;--accent:#e4572e;--amber:#b67a0a;--amber-l:#fbf0d6;--mute:#66726c;--line:#d8d3c6;--white:#fffdf8;--font:'Segoe UI',Arial,system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#0b1512;font-family:var(--font);color:var(--ink)}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;background:var(--paper);overflow:hidden}
+.slide{position:absolute;inset:0;padding:64px 120px 56px;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s;background:var(--paper)}
+.slide.active{opacity:1;visibility:visible;transform:none}
+.brand{position:absolute;top:30px;right:120px;display:flex;align-items:center;gap:16px}
+.brand img{height:38px}.brand i{width:1.5px;height:30px;background:var(--line)}
+.eyebrow{font-size:22px;font-weight:700;letter-spacing:.14em;color:var(--green);text-transform:uppercase;margin-bottom:14px}
+h1,h2,h3{font-weight:800;letter-spacing:-.035em}
+h2{font-size:64px;line-height:1.1;margin-bottom:14px}
+h2 em{font-style:normal;color:var(--green)}
+.lead{font-size:26px;line-height:1.4;color:var(--mute);max-width:1400px;margin-bottom:26px}
+.lead b{color:var(--ink)}
+.card{background:var(--white);border:1.5px solid var(--line);border-radius:20px;padding:26px 28px}
+.grid{display:grid;gap:22px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+.fill{flex:1;margin-bottom:20px}
+.fill .li{font-size:27px;padding:20px 0}
+.fill .col .sm{font-size:25px;margin-top:22px!important}
+.roomy td{padding:26px 14px;font-size:26px}
+.roomy th{padding:14px}
+.num{font-size:60px;font-weight:800;color:var(--green);line-height:1}
+.num.o{color:var(--accent)}.num.a{color:var(--amber)}
+.lbl{font-size:22px;color:var(--mute);margin-top:8px;line-height:1.3}
+.chip{display:inline-block;white-space:nowrap;font-size:18px;font-weight:800;letter-spacing:.06em;padding:6px 14px;border-radius:999px;text-transform:uppercase}
+.chip.ok{background:var(--green-l);color:var(--green)}
+.chip.wait{background:var(--amber-l);color:var(--amber)}
+.chip.todo{background:#ece8dc;color:var(--mute)}
+.chip.no{background:#fff0e8;color:var(--accent)}
+.kw{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.kw span{font-size:20px;font-weight:600;border:1.5px solid var(--line);border-radius:999px;padding:6px 16px;background:var(--paper)}
+h3{font-size:34px;margin:10px 0 6px}
+.sm{font-size:22px;color:var(--mute);line-height:1.4}
+.foot{margin-top:auto;font-size:20px;color:var(--mute);border-top:1.5px solid var(--line);padding-top:14px;display:flex;justify-content:space-between}
+/* cover */
+.cover{justify-content:center}
+.cover h1{font-size:150px;line-height:.95;margin:22px 0 10px}
+.cover .sub{font-size:44px;font-weight:700;color:var(--mute);line-height:1.2}.cover .sub b{color:var(--green)}
+.pill{display:inline-flex;align-self:flex-start;gap:14px;border:1.5px solid #8bbca5;border-radius:999px;padding:8px 20px;color:var(--green);font-size:20px;font-weight:700;letter-spacing:.08em}
+.status4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px;max-width:1500px}
+.st{background:var(--white);border:1.5px solid var(--line);border-radius:18px;padding:20px 22px}
+.st small{display:block;font-size:19px;letter-spacing:.1em;color:var(--mute);font-weight:700;text-transform:uppercase}
+.st b{display:block;font-size:30px;margin:6px 0 10px}
+/* exec */
+.col .li{font-size:28px;padding:24px 0}
+.col .sm{font-size:25px;margin-top:22px!important}
+.col h3{display:flex;align-items:center;gap:14px;margin:0 0 14px;font-size:38px}
+.dot{width:20px;height:20px;border-radius:50%;display:inline-block;flex:none}
+.dot.g{background:var(--green)}.dot.y{background:#e0a21a}.dot.r{background:var(--accent)}
+.li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-bottom:1.5px solid var(--line);font-size:24px;line-height:1.3}
+.li:last-child{border:0}
+.band{border-radius:18px;padding:26px 30px;display:flex;gap:26px;align-items:center;font-size:27px;line-height:1.35}
+.band.y{background:var(--amber-l);border:1.5px solid #e6c46f}
+.band.g{background:var(--green-l);border:1.5px solid #8bbca5}
+.band b.t{flex:none;font-size:20px;letter-spacing:.12em;text-transform:uppercase}
+/* map */
+.map{position:relative;height:720px}
+.chl{list-style:none;margin-top:16px}.chl li{font-size:27px;line-height:1.4;margin:16px 0;padding-left:20px;position:relative;color:var(--ink)}.chl li:before{content:"•";position:absolute;left:0;color:var(--green);font-weight:800}
+.node{position:absolute;background:var(--white);border:2px solid var(--line);border-radius:20px;padding:18px 22px}
+.node.ok{border-color:#8bbca5}.node.wait{border-color:#e6c46f;background:#fffaf0}
+.node h4{font-size:30px;font-weight:800;margin:8px 0 4px;line-height:1.2}
+.node p{font-size:22px;color:var(--mute);line-height:1.35}
+.lane{position:absolute;left:0;font-size:20px;font-weight:800;letter-spacing:.14em;color:var(--green)}
+.gate{position:absolute;background:var(--ink);color:#fff;border-radius:22px;padding:24px 28px}
+.gate h4{font-size:30px;margin:6px 0 12px}
+.gate li{font-size:25px;line-height:1.35;margin:6px 0 6px 22px;color:#e7efe9}
+.gate .t{font-size:18px;font-weight:800;letter-spacing:.14em;color:#8bd3b2}
+.plus{position:absolute;font-size:34px;font-weight:800;color:var(--mute)}
+svg.links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:24px}
+th{text-align:left;font-size:19px;letter-spacing:.1em;color:var(--green);text-transform:uppercase;padding:10px 14px;border-bottom:2px solid var(--line)}
+td{padding:15px 14px;border-bottom:1.5px solid var(--line);vertical-align:middle;line-height:1.35}
+td:first-child{font-weight:800}
+tr:last-child td{border-bottom:0}
+.mx td{padding:26px 20px}
+.mx .big{font-size:28px;font-weight:800;display:block;margin-top:8px}
+/* gantt */
+.gantt{display:flex;flex-direction:column;gap:10px}
+.grow{display:grid;grid-template-columns:200px repeat(8,1fr);gap:8px;align-items:center}
+.gantt .h{text-align:center;font-weight:800;font-size:22px;color:var(--green);background:var(--green-l);border-radius:10px;padding:8px 0}
+.gantt .r{font-size:24px;font-weight:800}
+.bar{border-radius:12px;padding:12px 16px;font-size:20px;font-weight:700;line-height:1.25;background:var(--green);color:#fff;min-height:58px;display:flex;align-items:center}
+.bar.soft{background:var(--green-l);color:var(--green)}
+.bar.am{background:var(--amber-l);color:var(--amber);border:1.5px dashed #e6c46f}
+.bar.dk{background:var(--ink)}
+.bar.rep{background:var(--accent)}
+/* phases */
+.ph .big{font-size:68px;font-weight:800;color:var(--green);line-height:1}
+.ph .big small{font-size:24px;color:var(--mute);font-weight:600;margin-left:8px}
+.ph h3{font-size:36px;margin:14px 0 10px;min-height:92px}
+.ph .k{font-size:19px;font-weight:800;letter-spacing:.12em;color:var(--green);text-transform:uppercase;margin:18px 0 6px}
+.ph ul{list-style:none}.ph li{font-size:25px;line-height:1.35;margin:8px 0;padding-left:20px;position:relative}
+.ph li:before{content:"•";position:absolute;left:0;color:var(--green);font-weight:800}
+.ph .gt{margin-top:18px;background:var(--amber-l);border:1.5px dashed #e6c46f;border-radius:12px;padding:14px 16px;font-size:23px;line-height:1.4;color:#6b4a06}
+.ph .rp{margin-top:22px;font-size:22px!important;display:inline-block;background:var(--accent);color:#fff;border-radius:10px;padding:8px 14px;font-size:20px;font-weight:800}
+/* asks */
+.ask{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:34px 32px}
+.ask .n{font-size:84px;font-weight:800;color:var(--green);line-height:1}
+.ask h3{margin:0 0 12px;font-size:40px}
+.ask .row{font-size:26px;line-height:1.45;color:var(--mute);margin-top:8px}.ask .row b{color:var(--ink)}
+#progress{position:fixed;left:0;top:0;height:5px;background:var(--green);z-index:9;transition:width .25s}
+#notes{position:fixed;left:0;right:0;bottom:0;max-height:42vh;overflow:auto;background:#0b1512;color:#e7efe9;padding:18px 28px;font-size:20px;line-height:1.55;z-index:20;display:none;border-top:3px solid var(--green)}
+#notes h5{font-size:14px;letter-spacing:.14em;color:#8bd3b2;margin-bottom:6px}
+#notes p{margin:0 0 10px}
+#notes .q{color:#f0b866}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="stage">
+
+<!-- 1 COVER -->
+<section class="slide cover active">
+  <div class="pill"><span>BÁO CÁO TIẾN ĐỘ</span><span>·</span><span>DEV &amp; MARKETING · ĐẾN HẾT TUẦN 7</span></div>
+  <h1>HomeMind</h1>
+  <div class="sub">App <b>dự kiến dùng được thứ 3 tuần sau</b>.<br>Marketing <b>sẵn sàng đẩy</b> ngay khi ra mắt.</div>
+  <div class="status4">
+    <div class="st"><small>App Store</small><b>Đã lên</b><span class="chip ok">Xong</span></div>
+    <div class="st"><small>Google Play</small><b>Đang duyệt</b><span class="chip wait">Dự kiến T3 tuần sau</span></div>
+    <div class="st"><small>Gói thanh toán · 2 nền tảng</small><b>Đang xin duyệt</b><span class="chip wait">Song song</span></div>
+    <div class="st"><small>Marketing</small><b>6 bài FB · 1 landing</b><span class="chip ok">Sẵn sàng</span></div>
+  </div>
+  <div style="margin-top:34px;font-size:22px;color:var(--mute)">Nhóm EXE · Đại học FPT · Báo cáo tiến độ</div>
+</section>
+
+<!-- 2 SUMMARY -->
+<section class="slide">
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="eyebrow">01 · Tóm tắt điều hành</div>
+  <h2>Ra mắt <em>dự kiến thứ 3 tuần sau</em>, marketing sẵn sàng đẩy</h2>
+  <div class="grid g3" style="margin:6px 0 22px">
+    <div class="card col"><h3><i class="dot g"></i>Dev</h3>
+      <div class="li"><span>App Store</span><span class="chip ok">Đã lên</span></div>
+      <div class="li"><span>Google Play</span><span class="chip wait">Đang duyệt</span></div>
+      <div class="li"><span>Gói thanh toán CH Play</span><span class="chip wait">Xin duyệt</span></div>
+      <div class="li"><span>Gói thanh toán App Store</span><span class="chip wait">Xin duyệt</span></div>
+      <div class="sm"><b style="color:var(--ink)">1/2</b> Store đã lên · còn lại dự kiến duyệt thứ 3 tuần sau</div></div>
+    <div class="card col"><h3><i class="dot g"></i>Marketing</h3>
+      <div class="li"><span>Bài Facebook chính</span><b style="font-size:32px;color:var(--green)">6</b></div>
+      <div class="li"><span>Kênh social</span><b style="font-size:32px;color:var(--green)">2</b></div>
+      <div class="li"><span>Landing page</span><b style="font-size:32px;color:var(--green)">1</b></div>
+      <div class="li"><span>Ưu đãi cho người đăng ký</span><b style="font-size:32px;color:var(--green)">30 ngày</b></div>
+      <div class="sm">Kênh, landing và lời mời đăng ký <b style="color:var(--ink)">đã sẵn sàng</b></div></div>
+    <div class="card col"><h3><i class="dot y"></i>Mốc sắp tới</h3>
+      <div class="li"><span>Tuần 8 · test form đăng ký</span><span class="chip todo">T8</span></div>
+      <div class="li"><span>Thứ 3 · app dùng được, đẩy marketing</span><span class="chip wait">Dự kiến</span></div>
+      <div class="li"><span>+2–3 ngày · đăng hướng dẫn</span><span class="chip todo">Sau ra mắt</span></div>
+      <div class="li"><span>+~1 tuần · thu phản hồi</span><span class="chip todo">Sau ra mắt</span></div>
+      <div class="sm">Cập nhật ngay khi Store xác nhận</div></div>
+  </div>
+  <div class="band g" style="margin-bottom:18px"><b class="t" style="color:var(--green)">Thông điệp</b><span>“Nhà có gì, không cần nhớ hết.” · Mời gia đình đăng ký nhận <b>30 ngày Premium</b></span></div>
+  <div class="band y"><b class="t" style="color:var(--amber)">Nhóm sẽ chốt</b><span><b>Ngân sách ads</b>, <b>cách phân loại 5 kênh</b>, <b>điều kiện ưu đãi</b> trước ngày ra mắt và <b>mục tiêu số liệu</b> (cuối tuần 9)</span></div>
+</section>
+
+<!-- 3 ROADMAP -->
+<section class="slide">
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="eyebrow">02 · Lộ trình đến ngày ra mắt</div>
+  <h2>Hai nhánh <em>cùng về đích thứ 3 tuần sau</em></h2>
+  <p class="lead">Dev hoàn tất duyệt Store và thanh toán; Marketing chuẩn bị sẵn nội dung ra mắt.</p>
+  <div class="map">
+    <svg class="links" viewBox="0 0 1680 690">
+      <defs><marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8a948f"/></marker></defs>
+      <g stroke="#8a948f" stroke-width="3" fill="none" marker-end="url(#ar)">
+        <path d="M1140,125 H1240"/><path d="M1140,375 H1240"/>
+        <path d="M412,375 H458"/><path d="M812,375 H858"/>
+        <path d="M1465,484 V518"/>
+      </g>
+    </svg>
+    <div class="lane" style="top:0">NHÁNH DEV · HOÀN TẤT DUYỆT (SONG SONG)</div>
+    <div class="node ok" style="left:0;top:40px;width:360px;height:170px"><span class="chip ok">Đã xong</span><h4>App Store</h4><p>Đã lên Store</p></div>
+    <div class="plus" style="left:372px;top:102px">+</div>
+    <div class="node wait" style="left:420px;top:40px;width:360px;height:170px"><span class="chip wait">Đang duyệt</span><h4>Google Play</h4><p>Dự kiến thứ 3 tuần sau</p></div>
+    <div class="plus" style="left:792px;top:102px">+</div>
+    <div class="node wait" style="left:840px;top:40px;width:300px;height:170px"><span class="chip wait">Xin duyệt</span><h4>Gói thanh toán</h4><p>CH Play + App Store</p></div>
+
+    <div class="lane" style="top:246px">NHÁNH MARKETING · CHUẨN BỊ ĐẨY</div>
+    <div class="node ok" style="left:0;top:290px;width:410px;height:170px"><span class="chip ok">Đã xong</span><h4>Kênh + landing</h4><p>FB · Threads · homemind.vn</p></div>
+    <div class="node" style="left:460px;top:290px;width:350px;height:170px"><span class="chip todo">Tuần 8</span><h4>Test form</h4><p>Lưu email · xác nhận · ưu đãi</p></div>
+    <div class="node" style="left:860px;top:290px;width:280px;height:170px"><span class="chip todo">Tuần 8</span><h4>Bài ra mắt</h4><p>Email · link Store</p></div>
+
+    <div class="gate" style="left:1250px;top:30px;width:430px;height:450px"><div class="t">NGÀY RA MẮT DỰ KIẾN</div><h4>Thứ 3 tuần sau</h4>
+      <ul><li>App dùng được trên 2 Store</li><li>Gói thanh toán sẵn sàng</li><li>Điều kiện ưu đãi 30 ngày đã chốt</li></ul>
+      <div style="font-size:21px;color:#8bd3b2;margin-top:16px">Đủ 3 điều kiện → đẩy marketing ngay</div></div>
+    <div class="node" style="left:1250px;top:522px;width:430px;height:160px"><span class="chip todo">Sau ra mắt</span><p style="margin-top:6px;font-size:22px">Bài ra mắt + email Premium → hướng dẫn +2–3 ngày → phản hồi +~1 tuần</p></div>
+    <div style="position:absolute;left:0;top:660px;display:flex;gap:18px;align-items:center;font-size:21px;color:var(--mute)"><span class="chip ok">Đã xong</span><span class="chip wait">Đang duyệt</span><span class="chip todo">Sắp làm</span><span>+ song song · → tuần tự</span></div>
+  </div>
+  <div class="foot"><span>Nếu ngày duyệt lệch: giữ lịch nội dung gia đình, cập nhật ngay khi có xác nhận.</span><span></span></div>
+</section>
+
+<!-- 4 DEV -->
+<section class="slide">
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="eyebrow">03 · Dev · Store &amp; thanh toán</div>
+  <h2>Ma trận <em>2 nền tảng × 2 cửa duyệt</em></h2>
+  <div class="card" style="padding:12px 16px">
+    <table class="mx">
+      <tr><th style="width:360px">Cửa duyệt</th><th>Google Play</th><th>App Store (Apple)</th></tr>
+      <tr><td>① Phát hành ứng dụng<span class="big" style="font-size:20px;color:var(--mute);font-weight:500">Bản đầu tiên lên Store</span></td>
+          <td><span class="chip wait">Đang duyệt</span><span class="big">⏳ Dự kiến thứ 3 tuần sau</span></td>
+          <td><span class="chip ok">Đã lên</span><span class="big">✔ Đã hiển thị trên Store</span></td></tr>
+      <tr><td>② Gói thanh toán<span class="big" style="font-size:20px;color:var(--mute);font-weight:500">Mua bán Premium trong app</span></td>
+          <td><span class="chip wait">Đang xin duyệt</span><span class="big">⏳ Song song với ứng dụng</span></td>
+          <td><span class="chip wait">Đang xin duyệt</span><span class="big">⏳ Song song với ứng dụng</span></td></tr>
+    </table>
+  </div>
+  <div class="grid g2 fill" style="margin-top:22px">
+    <div class="card"><div style="font-size:20px;font-weight:800;letter-spacing:.12em;color:var(--green)">DEV · TUẦN RA MẮT</div>
+      <div class="li"><span>Theo dõi kết quả duyệt trên 2 Store</span></div>
+      <div class="li"><span>Test mua gói &amp; kích hoạt Premium</span></div>
+      <div class="li"><span>Bàn giao điều kiện kích hoạt ưu đãi 30 ngày cho Marketing</span></div></div>
+    <div class="card"><div style="font-size:20px;font-weight:800;letter-spacing:.12em;color:var(--green)">DEV · SAU RA MẮT</div>
+      <div class="li"><span>Theo dõi Store, xử lý lỗi và đánh giá đầu tiên</span></div>
+      <div class="li"><span>Cung cấp link chính thức cho bài ra mắt và email</span></div>
+      <div class="li"><span>Chuyển phản hồi người dùng vào kế hoạch cập nhật</span></div></div>
+  </div>
+  <div class="foot"><span>Mốc ra mắt là dự kiến, cập nhật ngay khi Store xác nhận.</span><span>Cập nhật: hết tuần 7</span></div>
+</section>
+
+<!-- 5 MKT STATUS -->
+<section class="slide">
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="eyebrow">04 · Marketing · Đã chuẩn bị</div>
+  <h2>Nền tảng truyền thông <em>đã sẵn sàng</em></h2>
+  <p class="lead">Thông điệp: <b>“Nhà có gì, không cần nhớ hết.”</b> Khách hàng: gia đình, ưu tiên người mua sắm &amp; quản lý thực phẩm, đồ dùng.</p>
+  <div class="grid g4">
+    <div class="card"><div class="num">6</div><div class="lbl">bài Facebook chính đã đăng</div></div>
+    <div class="card"><div class="num">2</div><div class="lbl">kênh social: Facebook, Threads</div></div>
+    <div class="card"><div class="num">1</div><div class="lbl">landing page homemind.vn</div></div>
+    <div class="card"><div class="num">30</div><div class="lbl">ngày Premium cho người đăng ký</div></div>
+  </div>
+  <div class="card fill" style="margin-top:22px">
+    <table class="roomy">
+      <tr><th style="width:210px">Hạng mục</th><th>Kết quả</th><th style="width:240px">Trạng thái</th></tr>
+      <tr><td>Facebook</td><td>Coming Soon · Giới thiệu HomeMind · Mua trùng đồ · Bình chọn tủ lạnh · Thói quen tủ lạnh bừa · Mời đăng ký 30 ngày Premium</td><td><span class="chip ok">Đã đăng 6</span></td></tr>
+      <tr><td>Threads</td><td>Đã có kênh; 2 bài ngắn/tuần từ cùng chủ đề</td><td><span class="chip ok">Sẵn sàng</span></td></tr>
+      <tr><td>Thiết kế</td><td>Hướng màu kem &amp; xanh; giữ nguyên chữ gốc của logo</td><td><span class="chip ok">Đã chọn</span></td></tr>
+      <tr><td>Thu đăng ký</td><td>Bài mời về landing đã đăng; tuần 8 test form, xác nhận lưu email, đếm email hợp lệ</td><td><span class="chip todo">Tuần 8</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 6 CHANNELS -->
+<section class="slide">
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="eyebrow">05 · Marketing · Bản đồ 5 kênh</div>
+  <h2>Năm kênh, <em>một đích</em>: landing page</h2>
+  <p class="lead">Mọi kênh dẫn về landing, đăng ký email rồi giữ kết nối; khi ra mắt dẫn thẳng về link Store chính thức.</p>
+  <div class="grid g5 fill">
+    <div class="card" style="border-color:#8bbca5"><span class="chip ok">Đang chạy</span><h3>Social</h3><div class="num" style="font-size:52px">2+2</div><div class="sm">bài/tuần</div>
+      <ul class="chl"><li>Facebook 2 bài</li><li>Threads 2 bài ngắn từ cùng chủ đề</li><li>Story dùng lại hình</li></ul></div>
+    <div class="card"><span class="chip todo">Từ tuần 9</span><h3>Community</h3><div class="num" style="font-size:52px">3</div><div class="sm">nhóm gia đình</div>
+      <ul class="chl"><li>~1 thảo luận / tuần</li><li>Ghi lại câu hỏi và nhu cầu</li><li>Chỉ dẫn link khi được phép</li></ul></div>
+    <div class="card"><span class="chip todo">Từ tuần 9</span><h3>Web · SEO</h3><div class="num" style="font-size:52px">3</div><div class="sm">bài hữu ích</div>
+      <ul class="chl"><li>Tuần 9, 11, 13</li><li>Checklist đi chợ, danh sách mua chung, theo dõi đồ dùng</li><li>Không cam kết thứ hạng</li></ul></div>
+    <div class="card"><span class="chip todo">Khi ra mắt</span><h3>Email</h3><div class="num" style="font-size:52px">≤1</div><div class="sm">cập nhật / 2 tuần</div>
+      <ul class="chl"><li>Mẫu xác nhận đăng ký</li><li>Thông báo khi app dùng được</li><li>Chỉ gửi người đồng ý</li></ul></div>
+    <div class="card"><span class="chip wait">Đề xuất</span><h3>Paid Ads</h3><div class="num" style="font-size:52px">7</div><div class="sm">ngày thử</div>
+      <ul class="chl"><li>Một nội dung ưu đãi làm trọng tâm</li><li>Cần ngân sách, form, đo lường</li><li>Dừng khi form lỗi hoặc đạt trần</li></ul></div>
+  </div>
+  <div class="band g" style="font-size:25px;font-weight:700;flex-wrap:wrap;gap:14px">
+    <span>Social · Community · SEO · Ads</span><span style="color:var(--green)">→</span><span>Landing</span><span style="color:var(--green)">→</span><span>Email đăng ký</span><span style="color:var(--green)">→</span><span>Link Store chính thức</span><span style="color:var(--green)">→</span><span>Hướng dẫn nhận Premium</span>
+  </div>
+</section>
+
+<!-- 7 MEASUREMENT -->
+<section class="slide">
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="eyebrow">06 · Marketing · Đo lường</div>
+  <h2>Đo từ tuần 8: <em>từ tiếp cận đến tải và dùng app</em></h2>
+  <p class="lead">Mỗi chỉ số ghi rõ nguồn và khoảng thời gian. Đăng ký email không đồng nhất với tải app.</p>
+  <div class="card fill" style="padding:14px 18px">
+    <table class="roomy">
+      <tr><th style="width:80px">Bước</th><th style="width:340px">Chỉ số</th><th>Nguồn</th><th style="width:270px">Bắt đầu đo</th></tr>
+      <tr><td style="color:var(--green);font-size:34px">1</td><td>Tiếp cận &amp; phản hồi</td><td>Thống kê Facebook / Threads, bình luận có nội dung</td><td><span class="chip ok">Từ tuần 8</span></td></tr>
+      <tr><td style="color:var(--green);font-size:34px">2</td><td>Truy cập landing</td><td>Lượt bấm theo nguồn link</td><td><span class="chip ok">Từ tuần 8</span></td></tr>
+      <tr><td style="color:var(--green);font-size:34px">3</td><td>Đăng ký email hợp lệ</td><td>Form đăng ký, đã loại trùng</td><td><span class="chip ok">Từ tuần 8</span></td></tr>
+      <tr><td style="color:var(--green);font-size:34px">↳</td><td>Tỷ lệ đăng ký</td><td>Đăng ký ÷ truy cập × 100%</td><td><span class="chip ok">Từ tuần 8</span></td></tr>
+      <tr><td style="color:var(--green);font-size:34px">4</td><td>Tải &amp; dùng app</td><td>Google Play Console, App Store Connect</td><td><span class="chip wait">Từ ngày ra mắt</span></td></tr>
+      <tr><td style="color:var(--green);font-size:34px">5</td><td>Phản hồi &amp; nhu cầu</td><td>Câu hỏi, khó khăn của gia đình → nhóm sản phẩm</td><td><span class="chip wait">~1 tuần sau ra mắt</span></td></tr>
+    </table>
+  </div>
+  <div class="foot"><span>Cuối tuần 9: dùng số liệu 2 tuần đầu để nhóm đặt mục tiêu cho các tuần còn lại.</span><span></span></div>
+</section>
+
+<!-- 8 GANTT -->
+<section class="slide">
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="eyebrow">07 · Timeline tuần 8 → 15</div>
+  <h2>Bản đồ <em>8 tuần</em> sau ra mắt</h2>
+  <p class="lead">Mỗi tuần 2 bài Facebook + 2 bài Threads (16 + 16). Bài ra mắt thay bài thường, không thêm khối lượng. 3 bài website, 4 báo cáo.</p>
+  <div class="card fill" style="padding:18px 24px">
+    <div class="gantt">
+      <div class="grow"><span></span><span class="h">T8</span><span class="h">T9</span><span class="h">T10</span><span class="h">T11</span><span class="h">T12</span><span class="h">T13</span><span class="h">T14</span><span class="h">T15</span></div>
+      <div class="grow"><span class="r">Dev</span><b class="bar rep" style="grid-column:2/3">Ra mắt · Thứ 3</b><b class="bar soft" style="grid-column:3/10">Theo dõi Store · xử lý lỗi · cập nhật theo phản hồi</b></div>
+      <div class="grow"><span class="r">Social</span><b class="bar dk" style="grid-column:2/3">Bài ra mắt</b><b class="bar" style="grid-column:3/10">FB 2 bài + Threads 2 bài mỗi tuần · story dùng lại hình</b></div>
+      <div class="grow"><span class="r">Landing / Form</span><b class="bar dk" style="grid-column:2/3">Test form</b><b class="bar soft" style="grid-column:3/8">Theo dõi · chỉ 1 thay đổi chính / lượt</b><b class="bar dk" style="grid-column:8/10">Rà luồng quyền lợi</b></div>
+      <div class="grow"><span class="r">Website / SEO</span><b class="bar soft" style="grid-column:2/3">Kiểm tra</b><b class="bar" style="grid-column:3/4">Bài 1</b><b class="bar" style="grid-column:5/6">Bài 2</b><b class="bar" style="grid-column:7/8">Bài 3</b></div>
+      <div class="grow"><span class="r">Community</span><b class="bar soft" style="grid-column:3/10">Chọn 3 nhóm · ~1 thảo luận/tuần · ghi nhu cầu</b></div>
+      <div class="grow"><span class="r">Email</span><b class="bar dk" style="grid-column:2/3">Thông báo + Premium</b><b class="bar soft" style="grid-column:3/10">Hướng dẫn sau 2–3 ngày · cập nhật ≤1 lần / 2 tuần khi có tin</b></div>
+      <div class="grow"><span class="r">Paid Ads</span><b class="bar am" style="grid-column:3/10">Trình ngân sách · thử 7 ngày khi được duyệt</b></div>
+      <div class="grow"><span class="r">Báo cáo</span><b class="bar rep" style="grid-column:3/4">Lần 1</b><b class="bar rep" style="grid-column:5/6">Lần 2</b><b class="bar rep" style="grid-column:7/8">Lần 3</b><b class="bar rep" style="grid-column:9/10">Tổng kết</b></div>
+    </div>
+  </div>
+  <div class="foot"><span>Nền vàng nét đứt = đề xuất, thực hiện khi ngân sách được duyệt.</span><span></span></div>
+</section>
+
+<!-- 9 PHASES -->
+<section class="slide">
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="eyebrow">08 · Mục tiêu từng chặng</div>
+  <h2>Bốn chặng, mỗi chặng <em>một mục tiêu rõ</em></h2>
+  <div class="grid g4 fill ph" style="margin-top:8px">
+    <div class="card"><span class="chip ok">T8 – T9</span><h3>Ra mắt trơn tru</h3><div class="big">4+4<small>bài</small></div>
+      <div class="k">Việc chính</div><ul><li>Bài ra mắt, link Store chính thức</li><li>Email nhận Premium</li><li>Hướng dẫn sau 2–3 ngày</li></ul>
+      <div class="gt"><b>Theo dõi:</b> truy cập landing, email đăng ký, lượt tải</div><span class="rp">Báo cáo lần 1 · T9</span></div>
+    <div class="card"><span class="chip ok">T10 – T11</span><h3>Lắng nghe người dùng</h3><div class="big">4+4<small>bài</small></div>
+      <div class="k">Việc chính</div><ul><li>Thu phản hồi sau ~1 tuần</li><li>Chỉ 1 thay đổi chính / lượt</li><li>Thảo luận trong cộng đồng</li></ul>
+      <div class="gt"><b>Theo dõi:</b> tỷ lệ đăng ký, phản hồi có nội dung</div><span class="rp">Báo cáo lần 2 · T11</span></div>
+    <div class="card"><span class="chip ok">T12 – T13</span><h3>Tối ưu &amp; lan tỏa</h3><div class="big">4+4<small>bài</small></div>
+      <div class="k">Việc chính</div><ul><li>Tình huống gia đình từ phản hồi thật</li><li>Nhắc ưu đãi góc người đồng hành sớm</li><li>Lọc email sai / trùng</li></ul>
+      <div class="gt"><b>Theo dõi:</b> email hợp lệ, kích hoạt Premium</div><span class="rp">Báo cáo lần 3 · T13</span></div>
+    <div class="card"><span class="chip ok">T14 – T15</span><h3>Tổng kết &amp; đề xuất</h3><div class="big">4+4<small>bài</small></div>
+      <div class="k">Việc chính</div><ul><li>Tổng kết từng kênh</li><li>So sánh cùng khoảng thời gian</li><li>Đề xuất giai đoạn sau</li></ul>
+      <div class="gt"><b>Theo dõi:</b> tải, kích hoạt, trải nghiệm, chi tiêu thực tế nếu có</div><span class="rp">Tổng kết · T15</span></div>
+  </div>
+  <div class="foot"><span>Cảm ơn thầy/cô và các bạn đã lắng nghe — HomeMind · Nhóm EXE · FPT</span><span></span></div>
+</section>
+
+</div>
+<div id="notes"></div>
+<script src="notes.js"></script>
+<script>
+(function(){
+  const stage=document.getElementById('stage'),slides=[...document.querySelectorAll('.slide')],bar=document.getElementById('progress'),nb=document.getElementById('notes');
+  let cur=Math.max(0,Math.min(slides.length-1,(parseInt(location.hash.slice(1),10)||1)-1)),noteOn=false;
+  const fit=()=>stage.style.transform=`translate(-50%,-50%) scale(${Math.min(innerWidth/1920,innerHeight/1080)})`;
+  function renderNote(){const n=(window.NOTES||[])[cur];if(!n){nb.innerHTML='';return}nb.innerHTML=`<h5>KỊCH BẢN · SLIDE ${cur+1} · ${n.time}</h5>`+n.say.map(t=>`<p>${t}</p>`).join('')+`<p class="q">Mentor có thể hỏi: ${n.ask}</p>`}
+  function show(n){cur=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===cur));bar.style.width=((cur+1)/slides.length*100)+'%';history.replaceState(null,'','#'+(cur+1));renderNote()}
+  addEventListener('resize',fit);
+  addEventListener('keydown',e=>{const k=e.key;if(['ArrowRight','PageDown',' ','Enter'].includes(k)){e.preventDefault();show(cur+1)}else if(['ArrowLeft','PageUp','Backspace'].includes(k)){e.preventDefault();show(cur-1)}else if(k==='Home')show(0);else if(k==='End')show(slides.length-1);else if(k.toLowerCase()==='f')document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();else if(k.toLowerCase()==='s')location.href='kich-ban.html#'+(cur+1);else if(k.toLowerCase()==='n'){noteOn=!noteOn;nb.style.display=noteOn?'block':'none'}});
+  addEventListener('click',e=>{if(e.target.closest('#notes'))return;e.clientX<innerWidth*.25?show(cur-1):show(cur+1)});
+  fit();show(cur);
+})();
+</script>
+</body>
+</html>

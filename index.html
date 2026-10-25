@@ -11,8 +11,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0b1512;font-family:
 #stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;background:var(--paper);overflow:hidden}
 .slide{position:absolute;inset:0;padding:64px 120px 56px;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s;background:var(--paper)}
 .slide.active{opacity:1;visibility:visible;transform:none}
-.brand{position:absolute;top:30px;right:120px;display:flex;align-items:center;gap:16px}
-.brand img{height:38px}.brand i{width:1.5px;height:30px;background:var(--line)}
+.brand{position:absolute;top:22px;right:120px;display:flex;align-items:center;gap:20px}
+.brand img{height:64px}.brand img[alt=HomeMind]{height:88px}.brand i{width:1.5px;height:48px;background:var(--line)}
 .eyebrow{font-size:22px;font-weight:700;letter-spacing:.14em;color:var(--green);text-transform:uppercase;margin-bottom:14px}
 h1,h2,h3{font-weight:800;letter-spacing:-.035em}
 h2{font-size:64px;line-height:1.1;margin-bottom:14px}
@@ -123,6 +123,7 @@ tr:last-child td{border-bottom:0}
 
 <!-- 1 COVER -->
 <section class="slide cover active">
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo_crop.png" alt="HomeMind"></div>
   <div class="pill"><span>BÁO CÁO TIẾN ĐỘ</span><span>·</span><span>DEV &amp; MARKETING · ĐẾN HẾT TUẦN 7</span></div>
   <h1>HomeMind</h1>
   <div class="sub">App <b>dự kiến dùng được thứ 3 tuần sau</b>.<br>Marketing <b>sẵn sàng đẩy</b> ngay khi ra mắt.</div>
@@ -137,7 +138,7 @@ tr:last-child td{border-bottom:0}
 
 <!-- 2 SUMMARY -->
 <section class="slide">
-  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo_crop.png" alt="HomeMind"></div>
   <div class="eyebrow">01 · Tóm tắt điều hành</div>
   <h2>Ra mắt <em>dự kiến thứ 3 tuần sau</em>, marketing sẵn sàng đẩy</h2>
   <div class="grid g3" style="margin:6px 0 22px">
@@ -166,7 +167,7 @@ tr:last-child td{border-bottom:0}
 
 <!-- 3 ROADMAP -->
 <section class="slide">
-  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo_crop.png" alt="HomeMind"></div>
   <div class="eyebrow">02 · Lộ trình đến ngày ra mắt</div>
   <h2>Hai nhánh <em>cùng về đích thứ 3 tuần sau</em></h2>
   <p class="lead">Dev hoàn tất duyệt Store và thanh toán; Marketing chuẩn bị sẵn nội dung ra mắt.</p>
@@ -202,7 +203,7 @@ tr:last-child td{border-bottom:0}
 
 <!-- 4 DEV -->
 <section class="slide">
-  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo_crop.png" alt="HomeMind"></div>
   <div class="eyebrow">03 · Dev · Store &amp; thanh toán</div>
   <h2>Ma trận <em>2 nền tảng × 2 cửa duyệt</em></h2>
   <div class="card" style="padding:12px 16px">
@@ -231,7 +232,7 @@ tr:last-child td{border-bottom:0}
 
 <!-- 5 MKT STATUS -->
 <section class="slide">
-  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo_crop.png" alt="HomeMind"></div>
   <div class="eyebrow">04 · Marketing · Đã chuẩn bị</div>
   <h2>Nền tảng truyền thông <em>đã sẵn sàng</em></h2>
   <p class="lead">Thông điệp: <b>“Nhà có gì, không cần nhớ hết.”</b> Khách hàng: gia đình, ưu tiên người mua sắm &amp; quản lý thực phẩm, đồ dùng.</p>
@@ -254,7 +255,7 @@ tr:last-child td{border-bottom:0}
 
 <!-- 6 CHANNELS -->
 <section class="slide">
-  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo_crop.png" alt="HomeMind"></div>
   <div class="eyebrow">05 · Marketing · Bản đồ 5 kênh</div>
   <h2>Năm kênh, <em>một đích</em>: landing page</h2>
   <p class="lead">Mọi kênh dẫn về landing, đăng ký email rồi giữ kết nối; khi ra mắt dẫn thẳng về link Store chính thức.</p>
@@ -277,7 +278,7 @@ tr:last-child td{border-bottom:0}
 
 <!-- 7 MEASUREMENT -->
 <section class="slide">
-  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo_crop.png" alt="HomeMind"></div>
   <div class="eyebrow">06 · Marketing · Đo lường</div>
   <h2>Đo từ tuần 8: <em>từ tiếp cận đến tải và dùng app</em></h2>
   <p class="lead">Mỗi chỉ số ghi rõ nguồn và khoảng thời gian. Đăng ký email không đồng nhất với tải app.</p>
@@ -297,7 +298,7 @@ tr:last-child td{border-bottom:0}
 
 <!-- 8 GANTT -->
 <section class="slide">
-  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo_crop.png" alt="HomeMind"></div>
   <div class="eyebrow">07 · Timeline tuần 8 → 15</div>
   <h2>Bản đồ <em>8 tuần</em> sau ra mắt</h2>
   <p class="lead">Mỗi tuần 2 bài Facebook + 2 bài Threads (16 + 16). Bài ra mắt thay bài thường, không thêm khối lượng. 3 bài website, 4 báo cáo.</p>
@@ -319,7 +320,7 @@ tr:last-child td{border-bottom:0}
 
 <!-- 9 PHASES -->
 <section class="slide">
-  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo.png" alt="HomeMind"></div>
+  <div class="brand"><img src="assets/Logo_FPT.svg" alt="FPT"><i></i><img src="assets/logo_crop.png" alt="HomeMind"></div>
   <div class="eyebrow">08 · Mục tiêu từng chặng</div>
   <h2>Bốn chặng, mỗi chặng <em>một mục tiêu rõ</em></h2>
   <div class="grid g4 fill ph" style="margin-top:8px">

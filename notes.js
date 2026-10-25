@@ -4,10 +4,10 @@ window.NOTES=[
   "time": "30 giây",
   "say": [
    "Em chào thầy/cô và các bạn. Hôm nay nhóm em báo cáo xem HomeMind đã làm được gì đến hết tuần 7.",
-   "Tin chính là: tuần sau, vào thứ 3, app dự kiến dùng được. Nhóm marketing cũng đã chuẩn bị xong để quảng bá ngay.",
-   "Bốn ô trên màn hình là tình hình nhanh. App Store đã lên. Google Play đang được kiểm tra. Phần thanh toán đang chờ duyệt. Marketing đã đăng 6 bài và có 1 trang web giới thiệu."
+   "Tin chính là: thứ 3 tuần sau, nhóm dự kiến ra mắt bản dùng thử miễn phí. Nhóm marketing cũng đã chuẩn bị xong để quảng bá ngay.",
+   "Bốn ô trên màn hình là tình hình nhanh. App Store đã lên. Google Play đang được kiểm tra. Phần thanh toán đang chờ duyệt, dự kiến sang đầu tháng 11. Marketing đã đăng 6 bài và có 1 trang web giới thiệu."
   ],
-  "ask": "Thứ 3 chắc chắn chưa?  →  Trả lời: Đây là ngày dự kiến, nhóm sẽ cập nhật ngay khi Store báo.",
+  "ask": "Tuần sau đã bán gói được chưa?  →  Trả lời: Chưa. Tuần sau chỉ là bản dùng thử miễn phí, gói thanh toán dự kiến đầu tháng 11.",
   "opt": false
  },
  {
@@ -15,9 +15,9 @@ window.NOTES=[
   "time": "60 giây",
   "say": [
    "Em nói kết quả trước, rồi mới nói chi tiết.",
-   "Phần Dev, tức là làm app: App Store đã có app. Google Play đang kiểm tra. Hai phần thanh toán, một bên Google, một bên Apple, cũng đang chờ. Nghĩa là mới có 1 trên 2 cửa hàng sẵn sàng, và thứ 3 tuần sau dự kiến có đủ.",
-   "Phần Marketing: nhóm đã đăng 6 bài Facebook, có 2 kênh mạng xã hội, 1 trang web giới thiệu, và ưu đãi 30 ngày dùng Premium cho người đăng ký.",
-   "Cột bên phải là các mốc sắp tới: tuần 8 thử form đăng ký; thứ 3 app dùng được; sau 2 đến 3 ngày đăng hướng dẫn; khoảng 1 tuần sau thì hỏi ý kiến người dùng."
+   "Phần Dev, tức là làm app: App Store đã có app. Google Play đang kiểm tra. Hai phần thanh toán, một bên Google, một bên Apple, đang chờ duyệt và dự kiến xong đầu tháng 11.",
+   "Phần Marketing: nhóm đã đăng 6 bài Facebook, có 2 kênh mạng xã hội, 1 trang web giới thiệu, và ưu đãi 30 ngày Premium cho người đăng ký.",
+   "Cột bên phải là các mốc sắp tới: tuần 8 thử form đăng ký; thứ 3 ra mắt bản dùng thử và đẩy marketing; 2 đến 3 ngày sau đăng hướng dẫn, khoảng 1 tuần sau hỏi ý kiến người dùng; đầu tháng 11 là gói thanh toán."
   ],
   "ask": "Nếu Store duyệt chậm thì sao?  →  Trả lời: Nhóm vẫn đăng nội dung về gia đình bình thường, chưa nói ngày ra mắt.",
   "opt": false
@@ -27,12 +27,12 @@ window.NOTES=[
   "time": "75 giây",
   "say": [
    "Slide này là bản đồ. Có hai đường đi, cuối cùng gặp nhau ở ngày ra mắt.",
-   "Đường trên là của Dev. Có ba việc làm cùng lúc: App Store đã xong, Google Play đang được kiểm tra, và phần thanh toán đang chờ duyệt. Chữ “duyệt” nghĩa là Google hoặc Apple kiểm tra rồi cho phép.",
-   "Đường dưới là của Marketing. Trang web và các kênh đã xong. Tuần 8 nhóm thử form đăng ký xem có lưu được email không, và chuẩn bị bài ra mắt.",
-   "Hộp đen bên phải là điều kiện ra mắt. Cần đủ ba thứ: app dùng được trên hai cửa hàng, thanh toán sẵn sàng, và ưu đãi 30 ngày đã chốt. Đủ ba thứ thì nhóm quảng bá ngay.",
-   "Sau khi ra mắt: đăng bài và gửi email, 2 đến 3 ngày sau đăng hướng dẫn, khoảng 1 tuần sau hỏi người dùng thấy sao."
+   "Đường trên là của Dev. App Store đã xong. Google Play đang được kiểm tra, dự kiến thứ 3 tuần sau. “Duyệt” nghĩa là được Google hoặc Apple kiểm tra và cho phép.",
+   "Đường dưới là của Marketing. Trang web và các kênh đã xong. Tuần 8 nhóm thử form đăng ký và chuẩn bị bài ra mắt.",
+   "Hộp đen bên phải là ngày ra mắt dự kiến: thứ 3 tuần sau. Đây là bản dùng thử miễn phí, chưa có mua bán gì. App dùng được là nhóm đẩy marketing ngay.",
+   "Sau khi ra mắt: 2 đến 3 ngày sau đăng hướng dẫn, khoảng 1 tuần sau hỏi người dùng thấy sao. Gói thanh toán mở sau, dự kiến đầu tháng 11."
   ],
-  "ask": "Ưu đãi 30 ngày đã chốt chưa?  →  Trả lời: Nhóm đang chốt cùng nhóm sản phẩm, sẽ xong trước thứ 3.",
+  "ask": "Tại sao gói thanh toán không ra cùng lúc?  →  Trả lời: Phần thanh toán cần Google và Apple duyệt riêng, dự kiến xong đầu tháng 11.",
   "opt": false
  },
  {
@@ -41,8 +41,8 @@ window.NOTES=[
   "say": [
    "Bảng này cho biết app đang ở đâu trên hai cửa hàng ứng dụng.",
    "Hàng đầu là đưa app lên cửa hàng. Apple đã xong. Google Play đang kiểm tra, dự kiến thứ 3 tuần sau.",
-   "Hàng hai là phần thanh toán, để người dùng mua gói Premium trong app. Cả hai bên đang làm thủ tục cùng lúc với app.",
-   "Dưới bảng là việc của Dev. Tuần ra mắt: theo dõi kết quả duyệt, thử mua gói, bàn giao cách kích hoạt ưu đãi cho Marketing. Sau ra mắt: xem app có lỗi không, đưa link chính thức cho Marketing, và ghi lại ý kiến người dùng để sửa app."
+   "Hàng hai là phần thanh toán, để sau này người dùng mua gói Premium trong app. Cả hai bên đang làm thủ tục, dự kiến xong đầu tháng 11.",
+   "Dưới bảng là việc của Dev. Tuần ra mắt: theo dõi kết quả duyệt, phát hành bản dùng thử miễn phí, đưa link chính thức cho Marketing. Đầu tháng 11: hoàn tất duyệt gói thanh toán, thử mua gói và bàn giao cách kích hoạt ưu đãi cho Marketing."
   ],
   "ask": "Nếu bị yêu cầu sửa thì sao?  →  Trả lời: Dev sửa và nộp lại, nhóm sẽ báo ngày mới ngay.",
   "opt": false
@@ -67,7 +67,7 @@ window.NOTES=[
    "Kênh 1, mạng xã hội: mỗi tuần 2 bài Facebook và 2 bài Threads, đang chạy.",
    "Kênh 2, cộng đồng: từ tuần 9, nhóm vào 3 nhóm gia đình, mỗi tuần trò chuyện khoảng 1 lần, chỉ gửi link khi nhóm cho phép.",
    "Kênh 3, bài viết trên web: 3 bài hữu ích vào tuần 9, 11, 13, ví dụ danh sách đi chợ.",
-   "Kênh 4, email: gửi thông báo khi app dùng được, tối đa 1 lần mỗi 2 tuần, và chỉ gửi người đồng ý nhận.",
+   "Kênh 4, email: gửi thông báo khi bản dùng thử ra mắt, tối đa 1 lần mỗi 2 tuần, và chỉ gửi người đồng ý nhận.",
    "Kênh 5, quảng cáo trả tiền: đây mới là đề xuất. Thử 7 ngày nếu được duyệt ngân sách."
   ],
   "ask": "Quảng cáo chưa chạy thì có đủ 5 kênh không?  →  Trả lời: Nhóm sẽ chốt cách xếp kênh theo yêu cầu môn học và nhờ thầy/cô nhận xét nếu cần.",
@@ -91,7 +91,7 @@ window.NOTES=[
   "time": "75 giây",
   "say": [
    "Đây là lịch làm việc 8 tuần, mỗi hàng là một nhóm việc, mỗi cột là một tuần.",
-   "Hàng trên cùng là Dev: thứ 3 tuần 8 ra mắt, sau đó theo dõi app và sửa lỗi.",
+   "Hàng trên cùng là Dev: thứ 3 tuần 8 ra mắt bản dùng thử, sau đó theo dõi app, sửa lỗi, và mở gói thanh toán vào đầu tháng 11.",
    "Hàng Social: tuần nào cũng 2 bài Facebook và 2 bài Threads. Bài ra mắt được tính vào số bài này, nên không phải làm thêm.",
    "Các hàng còn lại: thử form ở tuần 8, 3 bài web ở tuần 9, 11, 13, trò chuyện cộng đồng từ tuần 9, và email thông báo ngay khi ra mắt.",
    "Bốn ô màu cam là bốn lần báo cáo: tuần 9, 11, 13 và 15. Ô vàng là quảng cáo, chỉ làm khi được duyệt ngân sách."
@@ -104,7 +104,7 @@ window.NOTES=[
   "time": "60 giây",
   "say": [
    "Em chia 8 tuần thành 4 chặng, mỗi chặng 2 tuần và có một mục tiêu đơn giản.",
-   "Tuần 8 và 9: ra mắt thật mượt. Đăng bài ra mắt, gửi email, đăng hướng dẫn sau 2 đến 3 ngày.",
+   "Tuần 8 và 9: ra mắt thật mượt. Đăng bài ra mắt, đăng hướng dẫn sau 2 đến 3 ngày, và báo cho người đăng ký khi gói thanh toán mở vào đầu tháng 11.",
    "Tuần 10 và 11: lắng nghe người dùng. Hỏi họ thấy app thế nào, và mỗi lần chỉ thay đổi một thứ để biết thay đổi nào có tác dụng.",
    "Tuần 12 và 13: làm tốt hơn và lan rộng hơn. Kể những câu chuyện gia đình có thật từ ý kiến người dùng.",
    "Tuần 14 và 15: nhìn lại tất cả và đề xuất việc cho giai đoạn sau.",
